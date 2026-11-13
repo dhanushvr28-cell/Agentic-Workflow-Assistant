@@ -60,8 +60,21 @@ python -m eval.run_eval      # writes eval/results.md and eval/results.json
 
 ### Results
 
-<!-- Paste the summary table from eval/results.md here. -->
-_Run the evaluation and paste `eval/results.md` here._
+`openai/gpt-oss-20b` on Groq, 22 tasks, native tool calling.
+
+| Metric | Value |
+|---|---|
+| Task success rate | 100% (22 of 22) |
+| Correct tool selection | 100% |
+| Average tool calls per task | 1.64 |
+| Average LLM calls per task | 2.64 |
+| Average time per task | 9.1 s |
+| Tasks with a tool error | 1, recovered and answered correctly |
+| Tasks that hit the step limit | 0 |
+
+The tool error was the lookup of a non-existent order: the order tool returned an error, the agent verified with a SQL query, then reported that the order does not exist. Multi-step tasks chained up to three tools, for example order lookup, policy search and calculation for a refund amount.
+
+Caveats: 22 tasks on a small synthetic database is a narrow test, and the tasks were written alongside the agent, so this shows the loop works end to end rather than how it would perform on open-ended requests. Results can vary slightly between runs because the model is not fully deterministic. Full per-task output is in `eval/results.md` and `eval/results.json`.
 
 ## Design decisions
 

@@ -4,11 +4,17 @@ Usage:  python -m eval.run_eval
 Reseeds the demo database first, then writes eval/results.md and eval/results.json.
 """
 import json
+import unicodedata
 
 from agent.api import build_agent
 from agent.config import get_settings
 from agent.seed import seed
 from eval.tasks import build_tasks
+
+
+def normalise(answer: str) -> str:
+    """Models often emit narrow or non-breaking spaces (e.g. between a name's words); compare on plain text."""
+    return " ".join(unicodedata.normalize("NFKC", answer).split())
 
 
 def run_tasks(agent, tasks: list[dict]) -> list[dict]:
@@ -21,7 +27,7 @@ def run_tasks(agent, tasks: list[dict]) -> list[dict]:
             break
         used = set(result.tools_used)
         row = {"id": task["id"], "question": task["q"], "answer": result.answer,
-               "success": bool(task["check"](result.answer)),
+               "success": bool(task["check"](normalise(result.answer))),
                "tools_ok": all(used & group for group in task["tools"]),
                "tools_used": result.tools_used, "tool_calls": len(result.steps), "llm_calls": result.llm_calls,
                "tool_errors": sum(1 for s in result.steps if s["error"]), "stopped": result.stopped,

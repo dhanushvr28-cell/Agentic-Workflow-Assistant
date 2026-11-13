@@ -1,0 +1,381 @@
+{
+  "summary": {
+    "tasks": 22,
+    "success_rate": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "avg_tool_calls": 1.6363636363636365,
+    "avg_llm_calls": 2.6363636363636362,
+    "avg_latency_s": 9.10490909090909,
+    "tasks_with_tool_errors": 1,
+    "recovered_after_tool_error": 1,
+    "hit_step_limit": 0
+  },
+  "tasks": [
+    {
+      "id": "db_count",
+      "question": "How many orders are currently in 'shipped' status?",
+      "answer": "There are **22 orders** currently in the 'shipped' status.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 2985
+    },
+    {
+      "id": "db_sum",
+      "question": "What is the total amount of all delivered orders?",
+      "answer": "The total amount of all delivered orders is \u20b9792,403.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 1230
+    },
+    {
+      "id": "db_group",
+      "question": "Which product category has the highest total sales from delivered orders?",
+      "answer": "Electronics \u2013 \u20b9408,890 in total sales from delivered orders.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 1167
+    },
+    {
+      "id": "db_filter",
+      "question": "How many customers are from Mumbai?",
+      "answer": "There are **8 customers** from Mumbai.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 1384
+    },
+    {
+      "id": "db_join",
+      "question": "Which customer has spent the most on delivered orders, and how much?",
+      "answer": "Isha\u202fReddy has spent the most on delivered orders, totaling\u202f\u20b944,683.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 1647
+    },
+    {
+      "id": "db_topn",
+      "question": "Which product has been ordered the most by total quantity across all orders?",
+      "answer": "The product ordered the most by total quantity is **\u201cLaptop Sleeve\u201d** (Product\u202fID\u202f8), with a cumulative quantity of **37** across all orders.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database",
+        "query_database"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 1633
+    },
+    {
+      "id": "order_lookup",
+      "question": "What is the status of order 2 and which product was ordered?",
+      "answer": "Order\u202f2 is **delivered**. The product ordered was a **Bluetooth Speaker**.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 2023
+    },
+    {
+      "id": "order_missing",
+      "question": "What is the status of order 99999?",
+      "answer": "I\u2019m sorry, but there is no order with ID\u202f99999 in our system.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "query_database"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 1,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 2093
+    },
+    {
+      "id": "policy_express",
+      "question": "How long does express shipping take and what does it cost?",
+      "answer": "Express shipping takes **2 business days** and costs **\u20b9249 per order**.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 10192
+    },
+    {
+      "id": "policy_warranty",
+      "question": "How long is the warranty on furniture?",
+      "answer": "Furniture comes with a 24\u2011month warranty from the delivery date.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 11487
+    },
+    {
+      "id": "policy_restock",
+      "question": "What restocking fee applies to opened products that are returned?",
+      "answer": "A 15\u202f% restocking fee applies to opened products that are returned.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 6992
+    },
+    {
+      "id": "policy_cancel",
+      "question": "Can a customer cancel an order that has already been shipped?",
+      "answer": "No. Once an order\u2019s status is \u201cshipped,\u201d it can\u2019t be cancelled; the customer must wait for delivery and then use the returns process.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 6744
+    },
+    {
+      "id": "policy_shipping_fee",
+      "question": "What is the standard shipping charge for an order of 1,500 rupees, and for one of 2,500 rupees?",
+      "answer": "- Order of \u20b91,500\u202f\u2192\u202fstandard shipping charge: **\u20b999**  \n- Order of \u20b92,500\u202f\u2192\u202fstandard shipping charge: **free** (\u20b90)",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies"
+      ],
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 12515
+    },
+    {
+      "id": "multi_refund",
+      "question": "The customer opened the product from order 186 and it works, but they want to return it. Is it still inside the return window, and how much refund would they get?",
+      "answer": "Yes \u2013 the order was delivered on 2026\u201110\u201126, so it\u2019s still within the 30\u2011day return window.  \nThe refund will be 85\u202f% of the order total: \u20b916,572.45.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "search_policies",
+        "calculate"
+      ],
+      "tool_calls": 3,
+      "llm_calls": 4,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 23332
+    },
+    {
+      "id": "multi_return_expired",
+      "question": "Is order 2 still eligible for a return?",
+      "answer": "No. Order\u202f2 was delivered on 2026\u201105\u201122, and the return window is only 30\u202fdays from delivery. Since it\u2019s well past that period, the product cannot be returned.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "search_policies"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 14800
+    },
+    {
+      "id": "multi_loyalty_gold",
+      "question": "Which loyalty tier is customer 7 in, and what discount do they get?",
+      "answer": "Customer\u202f7 is a **Gold** member and receives a **10\u202f% discount** on every order.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies",
+        "query_database"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 18774
+    },
+    {
+      "id": "multi_loyalty_silver",
+      "question": "Which loyalty tier is customer 2 in, and what discount do they get?",
+      "answer": "Customer\u202f2 is a **Silver** member and receives a **5\u202f% discount** on every order.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "search_policies",
+        "query_database"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 14944
+    },
+    {
+      "id": "multi_delayed",
+      "question": "Is order 29 delayed under our shipping policy, and how many days ago was it placed?",
+      "answer": "Yes \u2013 order\u202f29 is delayed. It was placed 160\u202fdays ago.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "search_policies"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 19217
+    },
+    {
+      "id": "multi_address",
+      "question": "Can the shipping address of order 69 still be changed?",
+      "answer": "Yes. The order is still in **processing** status, so the shipping address can be updated.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "search_policies"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 10035
+    },
+    {
+      "id": "multi_calc",
+      "question": "What is 12% of the total revenue from delivered Electronics orders?",
+      "answer": "12\u202f% of the total revenue from delivered Electronics orders is **\u20b949,066.80**.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database",
+        "calculate"
+      ],
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 8672
+    },
+    {
+      "id": "multi_percent",
+      "question": "What percentage of all orders were cancelled?",
+      "answer": "About **10.45\u202f%** of all orders were cancelled.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "query_database",
+        "query_database",
+        "calculate"
+      ],
+      "tool_calls": 3,
+      "llm_calls": 4,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 12965
+    },
+    {
+      "id": "action_ticket",
+      "question": "Order 29 still has not arrived. Check whether it is delayed under our policy and, if it is, create a support ticket for customer 7 with the priority the policy requires.",
+      "answer": "Order\u202f29 is delayed \u2013 it was shipped on\u202f2026\u201105\u201125 and is now 160\u202fdays past the order date, exceeding the 10\u2011day delay threshold.  \nA high\u2011priority support ticket has been opened (Ticket\u202f#1) for Customer\u202f7.",
+      "success": true,
+      "tools_ok": true,
+      "tools_used": [
+        "get_order_status",
+        "search_policies",
+        "create_ticket"
+      ],
+      "tool_calls": 3,
+      "llm_calls": 4,
+      "tool_errors": 0,
+      "stopped": "answered",
+      "protocol": "native",
+      "latency_ms": 15477
+    }
+  ]
+}

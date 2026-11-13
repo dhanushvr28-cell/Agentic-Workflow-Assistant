@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from agent.api import create_app
 from agent.config import Settings
 from agent.store import Store
-from eval.run_eval import run_tasks, summarise, to_markdown
+from eval.run_eval import normalise, run_tasks, summarise, to_markdown
 from eval.tasks import build_tasks, has_number, numbers
 from tests.conftest import TODAY
 
@@ -72,3 +72,9 @@ def test_ticket_task_checks_database_state(db_path, toolbox):
     assert not tasks["action_ticket"]["check"]("created")
     toolbox.execute("create_ticket", {"customer_id": customer, "subject": "Delayed order", "priority": "high"})
     assert tasks["action_ticket"]["check"]("created")
+
+
+def test_answers_are_normalised_before_checking(db_path):
+    tasks = {t["id"]: t for t in build_tasks(db_path, TODAY)}
+    answer = "Isha\u202fReddy has spent the most, totaling\u202f₹44,683."
+    assert not tasks["db_join"]["check"](answer) and tasks["db_join"]["check"](normalise(answer))
